@@ -10,8 +10,11 @@ import { reducer } from "./redux";
 import logger from 'redux-logger'
 import createSagaMiddleware from 'redux-saga';
 
+import watcherSaga from './saga'
+
 //intitialize the saga middleware
 const sagaMiddleware = createSagaMiddleware()
+sagaMiddleware.run(watcherSaga);
 
 //store of redux
 let store = createStore(reducer, applyMiddleware(logger, sagaMiddleware));
